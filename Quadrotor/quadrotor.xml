@@ -1,1 +1,110 @@
+<mujoco model="quadrotor">
 
+  <option timestep="0.01"
+          gravity="0 0 -9.81"/>
+
+  <visual>
+    <headlight diffuse="0.8 0.8 0.8"/>
+  </visual>
+
+  <worldbody>
+
+    <!-- Ground -->
+    <geom name="floor"
+          type="plane"
+          size="10 10 0.01"
+          rgba="0.7 0.7 0.7 1"/>
+
+    <!-- Quadrotor -->
+    <body name="quadrotor"
+          pos="0 0 1">
+
+      <freejoint/>
+
+      <!-- Central body -->
+      <geom name="body"
+            type="box"
+            size="0.18 0.12 0.04"
+            rgba="0.15 0.15 0.18 1"/>
+
+      <!-- Front arm (+X body) -->
+      <geom name="arm_front"
+            type="capsule"
+            fromto="0 0 0 0.45 0 0"
+            size="0.025"
+            rgba="0.2 0.2 0.2 1"/>
+
+      <!-- Rear arm (-X body) -->
+      <geom name="arm_rear"
+            type="capsule"
+            fromto="0 0 0 -0.45 0 0"
+            size="0.025"
+            rgba="0.2 0.2 0.2 1"/>
+
+      <!-- Left arm (+Y body) -->
+      <geom name="arm_left"
+            type="capsule"
+            fromto="0 0 0 0 0.35 0"
+            size="0.025"
+            rgba="0.2 0.2 0.2 1"/>
+
+      <!-- Right arm (-Y body) -->
+      <geom name="arm_right"
+            type="capsule"
+            fromto="0 0 0 0 -0.35 0"
+            size="0.025"
+            rgba="0.2 0.2 0.2 1"/>
+
+      <!-- Rotors -->
+      <geom name="rotor_front"
+            type="cylinder"
+            pos="0.45 0 0.03"
+            size="0.12 0.01"
+            rgba="0.1 0.3 0.9 0.7"/>
+
+      <geom name="rotor_rear"
+            type="cylinder"
+            pos="-0.45 0 0.03"
+            size="0.12 0.01"
+            rgba="0.1 0.3 0.9 0.7"/>
+
+      <geom name="rotor_left"
+            type="cylinder"
+            pos="0 0.35 0.03"
+            size="0.12 0.01"
+            rgba="0.1 0.3 0.9 0.7"/>
+
+      <geom name="rotor_right"
+            type="cylinder"
+            pos="0 -0.35 0.03"
+            size="0.12 0.01"
+            rgba="0.1 0.3 0.9 0.7"/>
+
+      <!-- Body-frame origin -->
+      <site name="body_origin"
+            pos="0 0 0.12"
+            size="0.04"
+            rgba="1 1 0 1"/>
+
+      <!-- +X body -->
+      <site name="body_x"
+            pos="0.35 0 0.12"
+            size="0.03"
+            rgba="1 0 0 1"/>
+
+      <!-- +Y body -->
+      <site name="body_y"
+            pos="0 0.30 0.12"
+            size="0.03"
+            rgba="0 1 0 1"/>
+
+      <!-- +Z body -->
+      <site name="body_z"
+            pos="0 0 0.30"
+            size="0.03"
+            rgba="0 0 1 1"/>
+
+    </body>
+  </worldbody>
+
+</mujoco>
